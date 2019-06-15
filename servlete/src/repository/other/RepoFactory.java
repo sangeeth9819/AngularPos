@@ -1,9 +1,7 @@
 package repository.other;
 
-import lk.ijse.absd.servlets.repository.spec.impl.CustomerRepoimpl;
-import lk.ijse.absd.servlets.repository.spec.impl.ItemRepoimpl;
-import lk.ijse.absd.servlets.repository.spec.impl.OrderDetailRepoimpl;
-import lk.ijse.absd.servlets.repository.spec.impl.OrderRepoimpl;
+
+import repository.spec.impl.CustomerRepoimpl;
 
 public class RepoFactory {
     public enum RepoTypes{
@@ -14,12 +12,12 @@ public class RepoFactory {
         switch (repoTypes){
             case CUSTOMER:
                 return (T) new CustomerRepoimpl();
-            case ORDERS:
-                return (T) new OrderRepoimpl();
-            case ITEM:
-                return (T) new ItemRepoimpl();
-            case ORDER_DETAIL:
-                return (T) new OrderDetailRepoimpl();
+//            case ORDERS:
+//                return (T) new OrderRepoimpl();
+//            case ITEM:
+//                return (T) new ItemRepoimpl();
+//            case ORDER_DETAIL:
+//                return (T) new OrderDetailRepoimpl();
             default:
                 return null;
         }
