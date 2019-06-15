@@ -1,0 +1,119 @@
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.sidebar {
+  position: fixed;
+  width: 16rem;
+  height: 100%;
+  background: #F5F5F5;
+  overflow-y: scroll;
+}
+.sidebar__button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: .5rem 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+}
+.sidebar__button:first-child {
+  margin-top: .5rem;
+}
+.sidebar__button:hover {
+  background: #DCDCDC;
+}
+.sidebar__button--icon {
+  width: 2.5rem;
+  height: 2rem;
+  margin-left: 1.5rem;
+}
+.sidebar__button--text {
+  width: 100%;
+  margin-left: 2rem;
+  margin-right: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  text-align: left;
+}
+.sidebar__button [data-tooltip]:hover:before, .sidebar__button [data-tooltip]:hover:after {
+  display: block;
+  position: absolute;
+  color: #000000;
+  font-size: 0.8rem;
+}
+.sidebar__button [data-tooltip]:hover:before {
+  content: attr(title);
+  border-radius: 0.2rem;
+  background-color: #FFFFFF;
+  margin-top: -2.5rem;
+  padding: 0.3rem;
+}
+.sidebar__button [data-tooltip]:hover:after {
+  content: '';
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #FFFFFF;
+  border-width: 0.5rem 0.5rem 0 0.5rem;
+  margin-top: -2rem;
+  margin-left: 1rem;
+}
+.sidebar__hr {
+  width: 15rem;
+  border-top: 1px solid #E0E0E0;
+}
+
+.text {
+  margin-left: 15rem;
+  padding: 1rem 2rem;
+  background: #FAFAFA;
+  font-size: 3rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+::-webkit-scrollbar {
+  width: .5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  height: .5rem;
+  background: #C9C9C9;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb {
+  background: #C9C9C9;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  height: .5rem;
+  background: #C9C9C9;
+}
+
+.main-div{
+  position: relative;
+  margin-top: 120px;
+}
+
+.ul-list{
+  list-style-type: none;
+}
+
+.ul-list li{
+  margin-top: 10px;
+}
+
+.ul-list li button{
+  width: 100%;
+}

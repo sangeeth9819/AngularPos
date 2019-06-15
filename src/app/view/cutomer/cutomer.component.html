@@ -1,0 +1,49 @@
+<br>
+<h1>Customer</h1>
+<br>
+<div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+
+      <input class="form-control" placeholder="Customer ID" name="cusname" id=#City [(ngModel)]="customerDto.fname"  required  minlength="2"  >
+    </div>
+    <div class="form-group col-md-6">
+
+      <input  class="form-control" placeholder="Customer Name" name="cusAddress" [(ngModel)]="customerDto.lname" required  minlength="2"  >
+    </div>
+    <div class="form-group col-md-6">
+
+      <input  class="form-control" placeholder="Customer Address" name="cusAddress" [(ngModel)]="customerDto.email" required  minlength="2"  >
+    </div>
+    <div class="form-group col-md-6">
+
+      <input  class="form-control" placeholder="Customer Mobile" name="cusAddress" [(ngModel)]="customerDto.tell" required  minlength="2"  >
+    </div>
+  </div>
+  <br>
+  <br>
+  <button type="submit" class="btn btn-primary" (click)="addCustomer()">Save</button>
+
+  <br>
+  <br>
+  <br>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of customerList" (click)="loadCustomer(customer)">
+      <td>{{customer.id}}</td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.tell}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
