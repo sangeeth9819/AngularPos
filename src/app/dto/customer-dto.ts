@@ -5,6 +5,4 @@ export class CustomerDto {
   lname: string;
   email: string;
   tell: number;
-
-
 }
