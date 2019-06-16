@@ -1,8 +1,8 @@
-export class CustomerDto {
+export class ItemDto {
 
-  cid: number;
+  code: number;
   name: string;
-  address: string;
-  mobile: string;
+  price: string;
+  qty: string;
 
 }
