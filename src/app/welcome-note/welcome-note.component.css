@@ -1,0 +1,110 @@
+.hex-icon {
+  color: #ffffff;
+  font-size: 2.25rem;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  -webkit-transition: color .25s;
+  -moz-transition: color .25s;
+  -ms-transition: color .25s;
+  -o-transition: color .25s;
+  transition: color .25s;
+}
+.section-title-container {
+  position: relative;
+  text-align: center;
+  z-index: 0;
+}
+.section-title-container:before {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  border-top: 1px dashed #000000;
+  z-index: -1;
+}
+.section-title {
+  background: #ffffff;
+  color: #1a1a1a;
+  font-family: "Dancing Script",sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-transform: inherit;
+  padding: 0 10px;
+  display: inline-block;
+}
+.section-padding {
+  padding: 100px 60px 0px 60px;
+}
+/* 6 - Welcome Section
+---------------------------------------------------------------------- */
+.welcome-title {
+  font-size: 1.25em;
+  text-align: center;
+}
+.welcome-texts {
+  text-align: center;
+}
+.best-deal {
+  border:1px solid #cccccc;
+  position: relative;
+  overflow: hidden;
+  margin-top: 100px;
+  z-index: 0;
+}
+.best-deal .foods-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.best-deal-content {
+  padding: 20px 0;
+  background: -webkit-linear-gradient(left, transparent 30%, rgba(255, 255, 255, 0.7), #ffffff 50%, #ffffff);
+  background: -moz-linear-gradient(left, transparent 30%, rgba(255, 255, 255, 0.7), #ffffff 50%, #ffffff);
+  background: -ms-linear-gradient(left, transparent 30%, rgba(255, 255, 255, 0.7), #ffffff 50%, #ffffff);
+  background: -o-linear-gradient(left, transparent 30%, rgba(255, 255, 255, 0.7), #ffffff 50%, #ffffff);
+  background: linear-gradient(left, transparent 30%, rgba(255, 255, 255, 0.7), #ffffff 50%, #ffffff);
+}
+[class^="deal-txt-"],
+[class*=" deal-txt-"] {
+  margin:0;
+  padding: 0;
+}
+.deal-txt-1 {
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+.deal-txt-2 {
+  color: #e12444;
+  font-size: 1.875em;
+  line-height: 1em;
+}
+.deal-txt-3 {
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+.deal-txt-3 span {
+  background: #fcb322;
+  color: #ffffff;
+  display:inline-block;
+  padding: 0 5px;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+

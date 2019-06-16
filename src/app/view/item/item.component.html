@@ -1,0 +1,48 @@
+<br>
+<h1>Item</h1>
+<br>
+<div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+
+      <input class="form-control" placeholder="Item ID" name="cusname" id=#City [(ngModel)]="itemDto.code"  required  minlength="2"  >
+    </div>
+    <div class="form-group col-md-6">
+
+      <input  class="form-control" placeholder="Description" name="cusAddress" [(ngModel)]="itemDto.name" required  minlength="2"  >
+    </div>
+    <div class="form-group col-md-6">
+
+      <input  class="form-control" placeholder="Price" name="cusAddress" [(ngModel)]="itemDto.price" required  minlength="2"  >
+    </div>
+    <div class="form-group col-md-6">
+
+      <input  class="form-control" placeholder="Qty" name="cusAddress" [(ngModel)]="itemDto.qty" required  minlength="2"  >
+    </div>
+  </div>
+  <br>
+  <br>
+  <button type="submit" class="btn btn-primary" (click)="addItem()">Save</button>
+
+  <br>
+  <br>
+  <br>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Qty</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of ItemList" (click)="loadItem(item)">
+      <td>{{item.code}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.qty}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
