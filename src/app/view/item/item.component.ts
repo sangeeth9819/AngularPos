@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ItemDto} from '../../dto/item-dto';
 import {ItemService} from '../../service/item.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-item',
@@ -31,10 +32,10 @@ export class ItemComponent implements OnInit {
       }
     ).subscribe(result => {
       if (result) {
-        alert('success');
+        Swal.fire('Item Added Successfully');
         this.getAll();
       } else {
-        alert('fail');
+        Swal.fire('Oops...', 'Something went wrong!', 'error');
       }
     });
   }

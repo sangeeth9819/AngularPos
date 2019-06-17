@@ -45,11 +45,11 @@ export class CutomerComponent implements OnInit {
     ).subscribe(result => {
       console.log(result);
       if (result) {
-        Swal.fire('Customer Added Successfully')
+        Swal.fire('Customer Added Successfully');
         this.getAll();
         // this.customerList.push(this.customerDto);
       } else {
-        Swal.fire('Oops...', 'Something went wrong!', 'error')
+        Swal.fire('Oops...', 'Something went wrong!', 'error');
       }
     });
   }
