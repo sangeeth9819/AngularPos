@@ -13,9 +13,12 @@ export class OrderComponent implements OnInit {
 
   private customerList: Array<CustomerDto> = [];
   private ItemList: Array<ItemDto> = [];
+  private oneItem: Array<ItemDto> = [];
+  private item: ItemDto = new ItemDto();
 
   itemId: number;
   itemName: string;
+  priceTXT: string;
 
   constructor(
     private customerService: CustomerService,
@@ -43,10 +46,24 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  setPrice11(name: number) {
-    this.ItemList.filter = this.itemName.trim().toLowerCase();
+  setPrice11(i: number) {
+    // console.log(JSON.stringify(i));
+    //   const d = 0;
+    //
+    //   for (d = 0; d < this.ItemList.length; d++) {
+    //     console.log(JSON.stringify(t));
+    //   }
+    // }
 
+    // const numbers = [1, 2, 3];
+    for (const num of this.ItemList) {
+      if (num.code == i) {
+        console.log(num.price);
+        this.priceTXT = num.price;
+      } else {
+        console.log('lll');
+      }
+    }
   }
-
 
 }

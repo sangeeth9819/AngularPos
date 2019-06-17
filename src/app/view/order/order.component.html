@@ -16,7 +16,7 @@
 
     <div class="form-group col-md-4">
       <label for="inputState">Item</label>
-      <select id="inputState" class="form-control" [(ngModel)]="itemName" name="item"  (change)="setPrice11(itemName)" >
+      <select id="inputState" class="form-control" [(ngModel)]="itemId" name="item"  (change)="setPrice11(itemId)" >
         <option  *ngFor="let items of ItemList" [value]="items.code">{{items.name}}</option>
       </select>
     </div>
@@ -27,7 +27,7 @@
 
     <div class="form-group col-md-2">
       <label for="inputPrice">Price</label>
-      <input type="text" class="form-control" id="inputPrice">
+      <input type="text" class="form-control" [(ngModel)]="priceTXT" name="fff" id="inputPrice">
     </div>
   </div>
   <br>
