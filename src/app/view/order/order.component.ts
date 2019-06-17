@@ -74,12 +74,10 @@ export class OrderComponent implements OnInit {
     this.customList.push(this.customDTO);
     this.customDTO = new CustomDto();
     this.total += parseFloat(this.priceTXT);
-
     console.log('Total :-----> ' + this.total);
 
   }
 
-  getTota(){
-  }
+
 
 }
