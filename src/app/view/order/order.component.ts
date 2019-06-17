@@ -24,6 +24,7 @@ export class OrderComponent implements OnInit {
   priceTXT: string;
   qtyTotal: number;
   qty: number;
+  total: number;
 
   constructor(
     private customerService: CustomerService,
@@ -63,7 +64,7 @@ export class OrderComponent implements OnInit {
   }
 
   myfunction() {
-    this.priceTXT = this.qty * this.priceTXT;
+    this.priceTXT = this.qty * parseFloat(this.priceTXT);
   }
 
   addtoTable() {
@@ -72,7 +73,13 @@ export class OrderComponent implements OnInit {
     this.customDTO.qty = this.qty;
     this.customList.push(this.customDTO);
     this.customDTO = new CustomDto();
+    this.total += parseFloat(this.priceTXT);
 
+    console.log('Total :-----> ' + this.total);
+
+  }
+
+  getTota(){
   }
 
 }
