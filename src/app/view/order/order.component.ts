@@ -3,6 +3,7 @@ import {CustomerService} from '../../service/customer.service';
 import {CustomerDto} from '../../dto/customer-dto';
 import {ItemService} from '../../service/item.service';
 import {ItemDto} from '../../dto/item-dto';
+import {CustomDto} from '../../dto/custom-dto';
 
 @Component({
   selector: 'app-order',
@@ -13,12 +14,16 @@ export class OrderComponent implements OnInit {
 
   private customerList: Array<CustomerDto> = [];
   private ItemList: Array<ItemDto> = [];
+  private customList: Array<CustomDto> = [];
   private oneItem: Array<ItemDto> = [];
+  customDTO: CustomDto = new CustomDto();
   private item: ItemDto = new ItemDto();
 
   itemId: number;
   itemName: string;
   priceTXT: string;
+  qtyTotal: number;
+  qty: number;
 
   constructor(
     private customerService: CustomerService,
@@ -42,20 +47,11 @@ export class OrderComponent implements OnInit {
   getAllItem() {
     this.itemService.getAllItems().subscribe(result => {
       this.ItemList = result;
-      console.log('item List :- ' + JSON.stringify(this.ItemList));
+      // console.log('item List :- ' + JSON.stringify(this.ItemList));
     });
   }
 
   setPrice11(i: number) {
-    // console.log(JSON.stringify(i));
-    //   const d = 0;
-    //
-    //   for (d = 0; d < this.ItemList.length; d++) {
-    //     console.log(JSON.stringify(t));
-    //   }
-    // }
-
-    // const numbers = [1, 2, 3];
     for (const num of this.ItemList) {
       if (num.code == i) {
         console.log(num.price);
@@ -64,6 +60,19 @@ export class OrderComponent implements OnInit {
         console.log('lll');
       }
     }
+  }
+
+  myfunction() {
+    this.priceTXT = this.qty * this.priceTXT;
+  }
+
+  addtoTable() {
+    this.customDTO.code = this.itemId;
+    this.customDTO.price = parseFloat(this.priceTXT);
+    this.customDTO.qty = this.qty;
+    this.customList.push(this.customDTO);
+    this.customDTO = new CustomDto();
+
   }
 
 }
