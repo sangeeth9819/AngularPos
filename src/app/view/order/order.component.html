@@ -35,7 +35,7 @@
 
   <br>
   <br>
-  <table class="table">
+  <table class="table table-hover table-bordered">
     <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -45,7 +45,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr  *ngFor="let item of customList" >
+    <tr  *ngFor="let item of customList let i=index"  (click)="tableRow_Click(i)">
       <td>{{item.code}}</td>
       <td>{{item.qty}}</td>
       <td>{{item.price}}</td>
@@ -53,5 +53,5 @@
     </tbody>
   </table>
 
-  <h6 class="card-category" style="font-size: xx-large">Total :{{Total}}</h6>
+  <h6 class="card-category" style="font-size: xx-large">Total :{{total}}</h6><button type="submit" class="btn btn-primary" (click)="placeOrder()">placeOrder</button>
 </div>

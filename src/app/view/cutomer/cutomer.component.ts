@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {CustomerService} from '../../service/customer.service';
 import {CustomerDto} from '../../dto/customer-dto';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -45,11 +45,11 @@ export class CutomerComponent implements OnInit {
     ).subscribe(result => {
       console.log(result);
       if (result) {
-        alert('success');
+        Swal.fire('Customer Added Successfully')
         this.getAll();
         // this.customerList.push(this.customerDto);
       } else {
-        alert('fail');
+        Swal.fire('Oops...', 'Something went wrong!', 'error')
       }
     });
   }
