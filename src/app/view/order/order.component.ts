@@ -93,7 +93,7 @@ export class OrderComponent implements OnInit {
     this.orderService.addItem(
       {
         oid: 0,
-        date: '10-05-2018',
+        date: '2019-12-12',
         total: 12.00,
         cid: 1,
         orderDetailDTOS: this.customList
