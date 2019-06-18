@@ -52,7 +52,7 @@ export class OrderComponent implements OnInit {
   getAll() {
     this.customerService.getAllCustomers().subscribe(result => {
       this.customerList = result;
-      console.log('Customer List Combo :- ' + JSON.stringify(this.customerList));
+      // console.log('Customer List Combo :- ' + JSON.stringify(this.customerList));
     });
 
   }
@@ -72,13 +72,13 @@ export class OrderComponent implements OnInit {
       this.priceTXT = this.itemDTO.price;
       this.description = this.itemDTO.name;
       this.itemId = this.itemDTO.code;
-      alert(this.itemId);
+      // alert(this.itemId);
 
     });
   }
 
   myfunction() {
-    this.priceTXT = this.qty * this.priceTXT;
+    // this.priceTXT = this.qty * this.priceTXT;
   }
 
   addtoTable() {
@@ -87,7 +87,7 @@ export class OrderComponent implements OnInit {
       this.orderDetailDTO.unitPrice = parseFloat(this.priceTXT),
       this.orderDetailDTO.qty = parseFloat(this.qty),
       this.orderValues.push(this.orderDetailDTO);
-    alert('Total :-----> ' + JSON.stringify(this.orderValues));
+    // alert('Total :-----> ' + JSON.stringify(this.orderValues));
 
     this.customDTO.description = this.description;
     this.customDTO.price = parseFloat(this.priceTXT);
@@ -95,9 +95,9 @@ export class OrderComponent implements OnInit {
     this.customList.push(this.customDTO);
     this.customDTO = new CustomDto();
     this.total = parseFloat(this.priceTXT);
-    for (const i in this.customList) {
-      alert('Total :-----> ' + this.orderValues);
-    }
+    // for (const i in this.customList) {
+    //   // alert('Total :-----> ' + this.orderValues);
+    // }
   }
 
   clearText() {
