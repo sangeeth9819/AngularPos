@@ -5,5 +5,5 @@ export class OrderDto {
   date: string;
   total: number;
   cid: number;
-  orderDetail: OrderDetailDto;
+  orderDetailDTOS: Array<OrderDetailDto>;
 }

@@ -24,15 +24,16 @@ export class OrderComponent implements OnInit {
   customDTO: CustomDto = new CustomDto();
   orderDetailDTO: OrderDetailDto = new OrderDetailDto();
   itemDTO: ItemDto = new ItemDto();
+  orderDTO: OrderDto = new OrderDto();
   private item: ItemDto = new ItemDto();
 
   itemId: number;
   cid: number;
   itemName: string;
-  priceTXT: number;
+  priceTXT: string;
   description: string;
   qtyTotal: number;
-  qty: number;
+  qty: string;
   total: number;
   searchId: number;
 
@@ -68,7 +69,7 @@ export class OrderComponent implements OnInit {
     this.itemService.getItemOne(this.searchId).subscribe(result => {
       this.itemDTO = result;
       console.log(JSON.stringify(this.itemDTO));
-      this.priceTXT = parseFloat(this.itemDTO.price);
+      this.priceTXT = this.itemDTO.price;
       this.description = this.itemDTO.name;
       this.itemId = this.itemDTO.code;
       alert(this.itemId);
@@ -81,20 +82,19 @@ export class OrderComponent implements OnInit {
   }
 
   addtoTable() {
-
     this.orderDetailDTO.code = this.itemId,
       this.orderDetailDTO.oid = 0,
-      this.orderDetailDTO.unitPrice = this.priceTXT,
-      this.orderDetailDTO.qty = this.qty,
-    this.orderValues.push(this.orderDetailDTO);
+      this.orderDetailDTO.unitPrice = parseFloat(this.priceTXT),
+      this.orderDetailDTO.qty = parseFloat(this.qty),
+      this.orderValues.push(this.orderDetailDTO);
     alert('Total :-----> ' + JSON.stringify(this.orderValues));
 
     this.customDTO.description = this.description;
-    this.customDTO.price = this.priceTXT;
-    this.customDTO.qty = this.qty;
+    this.customDTO.price = parseFloat(this.priceTXT);
+    this.customDTO.qty = parseFloat(this.qty);
     this.customList.push(this.customDTO);
     this.customDTO = new CustomDto();
-    this.total = this.priceTXT;
+    this.total = parseFloat(this.priceTXT);
     for (const i in this.customList) {
       alert('Total :-----> ' + this.orderValues);
     }
@@ -102,20 +102,17 @@ export class OrderComponent implements OnInit {
 
 
   placeOrder() {
-    this.orderService.addItem(
-      {
-        oid: 0,
-        date: '2019-12-12',
-        total: this.total,
-        cid: this.cid,
-        orderDetailDTOS: this.orderValues
-      }
-    ).subscribe(result => {
+    this.orderDTO.total = 12000000.00;
+    this.orderDTO.oid = 0;
+    this.orderDTO.date = '2019-11-11';
+    this.orderDTO.cid = 1,
+      this.orderDTO.orderDetailDTOS = this.orderValues;
+    this.orderService.addItem(this.orderDTO).subscribe(result => {
       if (result) {
-        alert('success');
+        Swal.fire('Order Added Successfully');
         this.getAll();
       } else {
-        alert('fail');
+        Swal.fire('Oops...', 'Something went wrong!', 'error');
       }
     });
   }

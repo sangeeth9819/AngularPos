@@ -5,7 +5,7 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputState">Customer</label>
-      <select id="inputState1"  class="form-control" [(ngModel)]="cid" >
+      <select id="inputState1"  class="form-control" [(ngModel)]="orderDTO.cid" >
         <option  *ngFor="let customer of customerList" value="{{customer.cid}}">{{customer.name}}</option>
         <option>...</option>
       </select>
