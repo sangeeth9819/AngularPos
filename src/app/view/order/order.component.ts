@@ -100,6 +100,10 @@ export class OrderComponent implements OnInit {
     }
   }
 
+  clearText() {
+    this.priceTXT = ' ';
+  }
+
 
   placeOrder() {
     this.orderDTO.total = 12000000.00;
@@ -132,6 +136,7 @@ export class OrderComponent implements OnInit {
           'Item Successfully deleted',
           'success'
         );
+        this.clearText();
         this.customList.splice(c, 1);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
