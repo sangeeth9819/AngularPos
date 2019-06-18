@@ -2,7 +2,7 @@ import {OrderDetailDto} from './order-detail-dto';
 
 export class OrderDto {
   oid: number;
-  date: Date;
+  date: string;
   total: number;
   cid: number;
   orderDetail: OrderDetailDto;

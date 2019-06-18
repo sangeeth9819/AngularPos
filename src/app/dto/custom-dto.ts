@@ -1,5 +1,5 @@
 export class CustomDto {
-  code: number;
+  description: string;
   qty: number;
   price: number;
 }

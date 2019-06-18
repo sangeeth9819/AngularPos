@@ -6,6 +6,8 @@ import {ItemDto} from '../../dto/item-dto';
 import {CustomDto} from '../../dto/custom-dto';
 import {OrderService} from '../../service/order.service';
 import Swal from 'sweetalert2';
+import {OrderDto} from '../../dto/order-dto';
+import {OrderDetailDto} from '../../dto/order-detail-dto';
 
 @Component({
   selector: 'app-order',
@@ -16,15 +18,19 @@ export class OrderComponent implements OnInit {
 
   private customerList: Array<CustomerDto> = [];
   private ItemList: Array<ItemDto> = [];
-  private searchItemList: Array<ItemDto> = [];
+  private orderValues: Array<OrderDetailDto> = [];
   private customList: Array<CustomDto> = [];
   private oneItem: Array<ItemDto> = [];
   customDTO: CustomDto = new CustomDto();
+  orderDetailDTO: OrderDetailDto = new OrderDetailDto();
+  itemDTO: ItemDto = new ItemDto();
   private item: ItemDto = new ItemDto();
 
   itemId: number;
+  cid: number;
   itemName: string;
   priceTXT: number;
+  description: string;
   qtyTotal: number;
   qty: number;
   total: number;
@@ -60,17 +66,14 @@ export class OrderComponent implements OnInit {
   setPrice11(i: number) {
     this.searchId = i;
     this.itemService.getItemOne(this.searchId).subscribe(result => {
-      this.ItemList = result;
-      alert(JSON.stringify(this.ItemList));
+      this.itemDTO = result;
+      console.log(JSON.stringify(this.itemDTO));
+      this.priceTXT = parseFloat(this.itemDTO.price);
+      this.description = this.itemDTO.name;
+      this.itemId = this.itemDTO.code;
+      alert(this.itemId);
+
     });
-    // for (const num of this.ItemList) {
-    //   if (num.code == i) {
-    //     console.log(num.price);
-    //     this.priceTXT = parseFloat(num.price);
-    //   } else {
-    //     console.log('lll');
-    //   }
-    // }
   }
 
   myfunction() {
@@ -78,7 +81,15 @@ export class OrderComponent implements OnInit {
   }
 
   addtoTable() {
-    this.customDTO.code = 12;
+
+    this.orderDetailDTO.code = this.itemId,
+      this.orderDetailDTO.oid = 0,
+      this.orderDetailDTO.unitPrice = this.priceTXT,
+      this.orderDetailDTO.qty = this.qty,
+    this.orderValues.push(this.orderDetailDTO);
+
+
+    this.customDTO.description = this.description;
     this.customDTO.price = this.priceTXT;
     this.customDTO.qty = this.qty;
     this.customList.push(this.customDTO);
@@ -95,9 +106,9 @@ export class OrderComponent implements OnInit {
       {
         oid: 0,
         date: '2019-12-12',
-        total: 12.00,
-        cid: 1,
-        orderDetailDTOS: this.customList
+        total: this.total,
+        cid: this.cid,
+        orderDetailDTOS: this.orderValues
       }
     ).subscribe(result => {
       if (result) {

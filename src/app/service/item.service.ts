@@ -38,7 +38,7 @@ export class ItemService {
     headers = headers.append('operation', 'search');
     let httpParams = new HttpParams();
     httpParams = httpParams.append('code', id);
-    return this.http.get<Array<ItemDto>>('http://localhost:8080/pos/item', {headers: headers, params: httpParams});
+    return this.http.get<ItemDto>('http://localhost:8080/pos/item', {headers: headers, params: httpParams});
   }
 
 
