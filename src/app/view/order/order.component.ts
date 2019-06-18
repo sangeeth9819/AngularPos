@@ -58,18 +58,19 @@ export class OrderComponent implements OnInit {
 
 
   setPrice11(i: number) {
-    // this.searchId = i;
-    // this.itemService.getItemOne(this.searchId).subscribe(result => {
-    //   this.ItemList = result;
-    // });
-    for (const num of this.ItemList) {
-      if (num.code == i) {
-        console.log(num.price);
-        this.priceTXT = parseFloat(num.price);
-      } else {
-        console.log('lll');
-      }
-    }
+    this.searchId = i;
+    this.itemService.getItemOne(this.searchId).subscribe(result => {
+      this.ItemList = result;
+      alert(JSON.stringify(this.ItemList));
+    });
+    // for (const num of this.ItemList) {
+    //   if (num.code == i) {
+    //     console.log(num.price);
+    //     this.priceTXT = parseFloat(num.price);
+    //   } else {
+    //     console.log('lll');
+    //   }
+    // }
   }
 
   myfunction() {
@@ -77,7 +78,7 @@ export class OrderComponent implements OnInit {
   }
 
   addtoTable() {
-    this.customDTO.code = this.itemId;
+    this.customDTO.code = 12;
     this.customDTO.price = this.priceTXT;
     this.customDTO.qty = this.qty;
     this.customList.push(this.customDTO);

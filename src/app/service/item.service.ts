@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {ItemDto} from '../dto/item-dto';
 import {stringify} from 'querystring';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
@@ -35,7 +36,10 @@ export class ItemService {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'Application/json');
     headers = headers.append('operation', 'search');
-    headers = headers.append('code', id);
-    return this.http.get<Array<ItemDto>>('http://localhost:8080/pos/item', {headers});
+    let httpParams = new HttpParams();
+    httpParams = httpParams.append('code', id);
+    return this.http.get<Array<ItemDto>>('http://localhost:8080/pos/item', {headers: headers, params: httpParams});
   }
+
+
 }
