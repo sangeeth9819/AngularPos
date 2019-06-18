@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
@@ -8,7 +8,8 @@ export class OrderService {
 
   constructor(
     private http: HttpClient,
-  ) { }
+  ) {
+  }
 
   addItem(OrderDto) {
     let headers = new HttpHeaders();
@@ -18,4 +19,6 @@ export class OrderService {
     console.log(`headers ${headers.keys()}`);
     return this.http.post('http://localhost:8080/pos/orders', OrderDto, {headers});
   }
+
+
 }

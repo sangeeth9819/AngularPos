@@ -16,6 +16,7 @@ export class OrderComponent implements OnInit {
 
   private customerList: Array<CustomerDto> = [];
   private ItemList: Array<ItemDto> = [];
+  private searchItemList: Array<ItemDto> = [];
   private customList: Array<CustomDto> = [];
   private oneItem: Array<ItemDto> = [];
   customDTO: CustomDto = new CustomDto();
@@ -23,10 +24,11 @@ export class OrderComponent implements OnInit {
 
   itemId: number;
   itemName: string;
-  priceTXT: string;
+  priceTXT: number;
   qtyTotal: number;
   qty: number;
   total: number;
+  searchId: number;
 
   constructor(
     private customerService: CustomerService,
@@ -51,19 +53,24 @@ export class OrderComponent implements OnInit {
   getAllItem() {
     this.itemService.getAllItems().subscribe(result => {
       this.ItemList = result;
-      // console.log('item List :- ' + JSON.stringify(this.ItemList));
     });
   }
 
+
   setPrice11(i: number) {
-    for (const num of this.ItemList) {
-      if (num.code == i) {
-        console.log(num.price);
-        this.priceTXT = num.price;
-      } else {
-        console.log('lll');
-      }
-    }
+    this.searchId = i;
+    this.itemService.getItemOne(this.searchId).subscribe(result => {
+      this.ItemList = result;
+      alert(result + '');
+    });
+    // for (const num of this.ItemList) {
+    //   if (num.code == i) {
+    //     console.log(num.price);
+    //     this.priceTXT = parseFloat(num.price);
+    //   } else {
+    //     console.log('lll');
+    //   }
+    // }
   }
 
   myfunction() {
@@ -72,24 +79,14 @@ export class OrderComponent implements OnInit {
 
   addtoTable() {
     this.customDTO.code = this.itemId;
-    this.customDTO.price = parseFloat(this.priceTXT);
+    this.customDTO.price = this.priceTXT;
     this.customDTO.qty = this.qty;
     this.customList.push(this.customDTO);
     this.customDTO = new CustomDto();
-    this.total = parseFloat(this.priceTXT);
-
-    // for (const a = 0; a < this.customList.length; a++) {
-    //   // this.total += this.customList.indexOf(a).getPr;
-    //   console.log('Total :-----> ');
-    // }
-
+    this.total = this.priceTXT;
     for (const i in this.customList) {
-      // this.total = this.total + parseFloat(this.priceTXT);
-      // this.total += parseFloat(this.priceTXT);
       console.log('Total :-----> ' + this.total);
     }
-
-
   }
 
 
@@ -128,8 +125,6 @@ export class OrderComponent implements OnInit {
           'success'
         );
         this.customList.splice(c, 1);
-        // For more information about handling dismissals please visit
-        // https://sweetalert2.github.io/#handling-dismissals
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelled',

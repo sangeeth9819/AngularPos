@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {CustomerDto} from '../dto/customer-dto';
 import {ItemDto} from '../dto/item-dto';
+import {stringify} from 'querystring';
 
 
 @Injectable({
@@ -11,7 +11,8 @@ export class ItemService {
 
   constructor(
     private http: HttpClient,
-  ) { }
+  ) {
+  }
 
 
   addItem(itemDto) {
@@ -27,6 +28,14 @@ export class ItemService {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'Application/json');
     headers = headers.append('operation', 'getAll');
+    return this.http.get<Array<ItemDto>>('http://localhost:8080/pos/item', {headers});
+  }
+
+  getItemOne(id) {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'Application/json');
+    headers = headers.append('operation', 'search');
+    headers = headers.append('code', id);
     return this.http.get<Array<ItemDto>>('http://localhost:8080/pos/item', {headers});
   }
 }
