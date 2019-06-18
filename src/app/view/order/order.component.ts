@@ -87,7 +87,7 @@ export class OrderComponent implements OnInit {
       this.orderDetailDTO.unitPrice = this.priceTXT,
       this.orderDetailDTO.qty = this.qty,
     this.orderValues.push(this.orderDetailDTO);
-
+    alert('Total :-----> ' + JSON.stringify(this.orderValues));
 
     this.customDTO.description = this.description;
     this.customDTO.price = this.priceTXT;
@@ -96,7 +96,7 @@ export class OrderComponent implements OnInit {
     this.customDTO = new CustomDto();
     this.total = this.priceTXT;
     for (const i in this.customList) {
-      console.log('Total :-----> ' + this.total);
+      alert('Total :-----> ' + this.orderValues);
     }
   }
 
