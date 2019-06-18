@@ -20,20 +20,18 @@ export class OrderComponent implements OnInit {
   private ItemList: Array<ItemDto> = [];
   private orderValues: Array<OrderDetailDto> = [];
   private customList: Array<CustomDto> = [];
-  private oneItem: Array<ItemDto> = [];
   customDTO: CustomDto = new CustomDto();
   orderDetailDTO: OrderDetailDto = new OrderDetailDto();
   itemDTO: ItemDto = new ItemDto();
   orderDTO: OrderDto = new OrderDto();
-  private item: ItemDto = new ItemDto();
 
   itemId: number;
-  cid: number;
-  itemName: string;
+  cid: string;
   priceTXT: string;
   description: string;
-  qtyTotal: number;
   qty: string;
+  priceText2: number;
+  qty2: number;
   total: number;
   searchId: number;
 
@@ -78,7 +76,10 @@ export class OrderComponent implements OnInit {
   }
 
   myfunction() {
-    // this.priceTXT = this.qty * this.priceTXT;
+    this.priceText2 = parseFloat(this.priceTXT);
+    this.qty2 = parseFloat(this.qty);
+    this.priceText2 = this.qty2 * this.priceText2;
+    this.priceTXT = this.priceText2.toString();
   }
 
   addtoTable() {
@@ -106,10 +107,10 @@ export class OrderComponent implements OnInit {
 
 
   placeOrder() {
-    this.orderDTO.total = 12000000.00;
+    this.orderDTO.total = parseFloat(this.priceTXT);
     this.orderDTO.oid = 0;
     this.orderDTO.date = '2019-11-11';
-    this.orderDTO.cid = 1,
+    this.orderDTO.cid = parseFloat(this.cid),
       this.orderDTO.orderDetailDTOS = this.orderValues;
     this.orderService.addItem(this.orderDTO).subscribe(result => {
       if (result) {
